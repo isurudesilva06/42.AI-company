@@ -1,8 +1,11 @@
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const nodemailer = require('nodemailer');
-require('dotenv').config();
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import nodemailer from 'nodemailer';
+import airtableService from './airtableService.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -13,7 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Email transporter configuration
-const transporter = nodemailer.createTransporter({
+const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: process.env.EMAIL_USER || 'your-email@gmail.com',
@@ -116,6 +119,63 @@ const servicesData = {
 };
 
 // Routes
+
+// Project routes
+app.get('/api/projects', async (req, res) => {
+  try {
+    const projects = await airtableService.getAllProjects();
+    res.status(200).json({
+      success: true,
+      data: projects
+    });
+  } catch (error) {
+    console.error('Error fetching projects:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch projects'
+    });
+  }
+});
+
+// Get featured projects only
+app.get('/api/projects/featured', async (req, res) => {
+  try {
+    const projects = await airtableService.getFeaturedProjects();
+    res.status(200).json({
+      success: true,
+      data: projects
+    });
+  } catch (error) {
+    console.error('Error fetching featured projects:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch featured projects'
+    });
+  }
+});
+
+// Get specific project by ID
+app.get('/api/projects/:id', async (req, res) => {
+  try {
+    const project = await airtableService.getProjectById(req.params.id);
+    if (!project) {
+      return res.status(404).json({
+        success: false,
+        message: 'Project not found'
+      });
+    }
+    res.status(200).json({
+      success: true,
+      data: project
+    });
+  } catch (error) {
+    console.error('Error fetching project:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch project'
+    });
+  }
+});
 
 // Get all services
 app.get('/api/services', (req, res) => {
@@ -301,4 +361,4 @@ app.listen(PORT, () => {
   console.log(`Health check: http://localhost:${PORT}/api/health`);
 });
 
-module.exports = app; 
+export default app; 

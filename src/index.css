@@ -340,3 +340,27 @@ html {
   backface-visibility: hidden;
   perspective: 1000;
 }
+
+/* Prevent 3D objects from capturing scroll events */
+canvas {
+  pointer-events: none !important;
+}
+
+/* Ensure Spline iframes don't capture scroll */
+iframe[src*="spline"] {
+  pointer-events: none !important;
+}
+
+/* Ensure Spline containers don't interfere with scrolling */
+div[data-spline] {
+  pointer-events: none !important;
+}
+
+/* Alternative approach for Spline components */
+.spline-container {
+  pointer-events: none !important;
+}
+
+.spline-container * {
+  pointer-events: none !important;
+}
