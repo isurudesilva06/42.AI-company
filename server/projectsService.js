@@ -1,11 +1,14 @@
-// Static projects data service
+// PURELY LOCAL projects data service - NO EXTERNAL APIS OR AIRTABLE
 class ProjectsService {
   constructor() {
-    console.log('Projects service initialized with static data');
+    console.log('🔒 Projects service initialized with STATIC LOCAL DATA ONLY - No Airtable or external APIs');
   }
 
   async getAllProjects() {
-    return this.getStaticProjects();
+    // ONLY return local static projects - NO external API calls
+    const localProjects = this.getStaticProjects();
+    console.log('🔒 Returning ONLY local manual projects - NO Airtable data');
+    return localProjects;
   }
 
   async getFeaturedProjects() {
