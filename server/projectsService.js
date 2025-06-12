@@ -22,7 +22,7 @@ class ProjectsService {
     return [
       // 🔥 EXAMPLE WITH LOCAL IMAGES - Replace with your actual projects:
       {
-        id: 'my-project-1',
+        id: 'Recipe-app',
         title: 'Recip Genie',
         description: 'Recipe Genie is an AI-powered mobile app that helps users generate personalized recipes based on ingredients, cuisine, dietary preferences, and mood. With a simple and intuitive interface, it makes cooking easier, smarter, and more enjoyable for everyone—from beginners to seasoned chefs.',
         shortDescription: 'AI-powered recipe generator',
@@ -46,36 +46,11 @@ class ProjectsService {
         tags: ['Full-Stack', 'Responsive', 'API'], // Add relevant tags
         createdTime: '2024-01-15T10:00:00.000Z'
       },
-      {
-        id: 'my-project-2',
-        title: 'Savora',
-        description: 'Savora’s web application offers a smooth and stylish way to explore our menu, book a table, and enjoy our traditional cuisine with modern convenience. From viewing delicious dishes to connecting with our chefs, everything you need is just a click away.',
-        shortDescription: 'Explore our menu, reserve tables, and enjoy a seamless dining experience — all online with Savora.',
-        technologies: ['HTML5', 'CSS3', 'JavaScriptB'], // Add your actual technologies
-        category: 'Web Development', // Options: 'Web Development', 'Mobile Development', 'Backend Development', 'UI/UX Design', 'DevOps'
-        status: 'Completed', // Options: 'Completed', 'In Progress', 'Planning'
-        clientName: 'Ashan', // Can be empty string ''
-       // projectUrl: 'https://your-project-url.com', // Can be empty string ''
-        githubUrl: 'https://github.com/yourusername/repo', // Can be empty string ''
-        
-        // 🖼️ LOCAL IMAGES - Using your uploaded project1.png
-        imageUrl: '/images/projects/project2.png', // Your actual project screenshot
-        images: [
-          { url: '/images/projects/project2.png', filename: 'main' },
-          // Add more screenshots if you have them
-        ],
-        
-        startDate: '2024-01-15', // Format: YYYY-MM-DD
-        endDate: '2024-03-15', // Format: YYYY-MM-DD or null if ongoing
-        featured: true, // Set to true for your best projects
-        tags: ['Full-Stack', 'Responsive', 'API'], // Add relevant tags
-        createdTime: '2024-01-15T10:00:00.000Z'
-      }
       
-      // 📝 TEMPLATE FOR MORE PROJECTS:
-      /*
+      
+      
       {
-        id: 'my-ecommerce-project',
+        id: 'my-ecommerce-projectttt',
         title: 'E-Commerce Website',
         description: 'Full-stack e-commerce platform with payment integration and admin dashboard.',
         shortDescription: 'Modern e-commerce platform with Stripe integration.',
@@ -100,7 +75,7 @@ class ProjectsService {
         tags: ['E-commerce', 'Payment', 'Admin Panel'],
         createdTime: '2024-02-01T10:00:00.000Z'
       },
-      */
+    
     ];
   }
 }
