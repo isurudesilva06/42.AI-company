@@ -53,8 +53,8 @@ class ProjectsService {
       
       
       {
-        id: 'my-ecommerce-projectttt',
-        title: 'E-Commerce Website',
+        id: 'my-ecommerce-project',
+        title: 'E-Commerce Website for a local business',
         description: 'Full-stack e-commerce platform with payment integration and admin dashboard.',
         shortDescription: 'Modern e-commerce platform with Stripe integration.',
         technologies: ['React', 'Node.js', 'Stripe', 'MongoDB'],
@@ -65,7 +65,7 @@ class ProjectsService {
         githubUrl: 'https://github.com/myusername/ecommerce',
         
         // 🖼️ LOCAL IMAGES - Copy your screenshots to public/images/projects/
-        imageUrl: '/images/projects/ecommerce-main.jpg',
+        imageUrl: '/images/projects/project3.png',
         images: [
           { url: '/images/projects/ecommerce-main.jpg', filename: 'homepage' },
           { url: '/images/projects/ecommerce-cart.jpg', filename: 'shopping-cart' },

@@ -115,11 +115,11 @@ const Projects = () => {
           </div>
 
           {project.imageUrl && (
-            <div className="mb-6 rounded-xl overflow-hidden">
+            <div className="mb-6 rounded-xl overflow-hidden bg-gray-900/30">
               <img
                 src={project.imageUrl}
                 alt={project.title}
-                className="w-full h-64 object-cover"
+                className="w-full h-80 md:h-96 object-contain"
               />
             </div>
           )}
@@ -333,7 +333,7 @@ const Projects = () => {
             </div>
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8">
             {filteredProjects.map((project) => (
               <div
                 key={project.id}
@@ -341,11 +341,11 @@ const Projects = () => {
                 onClick={() => setSelectedProject(project)}
               >
                 {project.imageUrl && (
-                  <div className="relative overflow-hidden h-48">
+                  <div className="relative overflow-hidden h-64 md:h-72 lg:h-80">
                     <img
                       src={project.imageUrl}
                       alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-contain bg-gray-900/50 group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     {project.featured && (
