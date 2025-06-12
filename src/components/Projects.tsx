@@ -44,18 +44,29 @@ const Projects = () => {
   const fetchProjects = async () => {
     try {
       setLoading(true);
+      
+      // Only fetch from local backend - NO EXTERNAL DATA SOURCES
       const response = await fetch('/api/projects');
+      
+      if (!response.ok) {
+        throw new Error(`Backend not available: ${response.status}`);
+      }
+      
       const data = await response.json();
       
-      if (data.success) {
+      if (data.success && Array.isArray(data.data)) {
+        // Ensure we only use local project data
         setProjects(data.data);
         setError(null);
+        console.log('✅ Projects loaded from LOCAL BACKEND ONLY - No Airtable');
       } else {
-        setError('Failed to fetch projects');
+        throw new Error('Invalid data format from local backend');
       }
     } catch (err) {
-      setError('Failed to connect to server');
-      console.error('Error fetching projects:', err);
+      // NO FALLBACK TO EXTERNAL SOURCES - ONLY LOCAL DATA
+      setError('❌ Local backend server is not running. Please run "npm run dev". NO EXTERNAL DATA SOURCES (including Airtable) will be used.');
+      setProjects([]); // Clear any existing data
+      console.error('❌ LOCAL BACKEND CONNECTION FAILED - NO AIRTABLE FALLBACK:', err);
     } finally {
       setLoading(false);
     }
