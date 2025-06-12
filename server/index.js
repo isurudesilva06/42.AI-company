@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import nodemailer from 'nodemailer';
-import airtableService from './airtableService.js';
+import projectsService from './projectsService.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -123,7 +123,7 @@ const servicesData = {
 // Project routes
 app.get('/api/projects', async (req, res) => {
   try {
-    const projects = await airtableService.getAllProjects();
+    const projects = await projectsService.getAllProjects();
     res.status(200).json({
       success: true,
       data: projects
@@ -140,7 +140,7 @@ app.get('/api/projects', async (req, res) => {
 // Get featured projects only
 app.get('/api/projects/featured', async (req, res) => {
   try {
-    const projects = await airtableService.getFeaturedProjects();
+    const projects = await projectsService.getFeaturedProjects();
     res.status(200).json({
       success: true,
       data: projects
@@ -157,7 +157,7 @@ app.get('/api/projects/featured', async (req, res) => {
 // Get specific project by ID
 app.get('/api/projects/:id', async (req, res) => {
   try {
-    const project = await airtableService.getProjectById(req.params.id);
+    const project = await projectsService.getProjectById(req.params.id);
     if (!project) {
       return res.status(404).json({
         success: false,
