@@ -25,7 +25,7 @@ class ProjectsService {
     return [
       // 🔥 EXAMPLE WITH LOCAL IMAGES - Replace with your actual projects:
       {
-        id: 'Recipe-app',
+        id: 'project1',
         title: 'Recip Genie',
         description: 'Recipe Genie is an AI-powered mobile app that helps users generate personalized recipes based on ingredients, cuisine, dietary preferences, and mood. With a simple and intuitive interface, it makes cooking easier, smarter, and more enjoyable for everyone—from beginners to seasoned chefs.',
         shortDescription: 'AI-powered recipe generator',
@@ -53,7 +53,7 @@ class ProjectsService {
       
       
       {
-        id: 'my-ecommerce-project',
+        id: 'project2',
         title: 'E-Commerce Website for a local business',
         description: 'Full-stack e-commerce platform with payment integration and admin dashboard.',
         shortDescription: 'Modern e-commerce platform with Stripe integration.',
@@ -80,7 +80,7 @@ class ProjectsService {
       },
 
       {
-        id: 'my-project-2',
+        id: 'project3',
         title: 'Savora',
         description: 'Savora’s web application offers a smooth and stylish way to explore our menu, book a table, and enjoy our traditional cuisine with modern convenience. From viewing delicious dishes to connecting with our chefs, everything you need is just a click away.',
         shortDescription: 'Explore our menu, reserve tables, and enjoy a seamless dining experience — all online with Savora.',
@@ -105,7 +105,7 @@ class ProjectsService {
         createdTime: '2024-01-15T10:00:00.000Z'
       },
       {
-        id: 'budget buddy',
+        id: 'project4',
         title: 'Budget Buddy',
         description: 'Savora’s web application offers a smooth and stylish way to explore our menu, book a table, and enjoy our traditional cuisine with modern convenience. From viewing delicious dishes to connecting with our chefs, everything you need is just a click away.',
         shortDescription: 'Explore our menu, reserve tables, and enjoy a seamless dining experience — all online with Savora.',
@@ -130,8 +130,8 @@ class ProjectsService {
         createdTime: '2024-01-15T10:00:00.000Z'
       },
       {
-        id: 'my-project-2',
-        title: 'Savora',
+        id: 'project5',
+        title: 'Dashboard for a clothing company',
         description: 'Savora’s web application offers a smooth and stylish way to explore our menu, book a table, and enjoy our traditional cuisine with modern convenience. From viewing delicious dishes to connecting with our chefs, everything you need is just a click away.',
         shortDescription: 'Explore our menu, reserve tables, and enjoy a seamless dining experience — all online with Savora.',
         technologies: ['HTML5', 'CSS3', 'JavaScriptB'], // Add your actual technologies
@@ -142,9 +142,9 @@ class ProjectsService {
         githubUrl: 'https://github.com/yourusername/repo', // Can be empty string ''
         
         // 🖼️ LOCAL IMAGES - Using your uploaded project1.png
-        imageUrl: '/images/projects/project2.png', // Your actual project screenshot
+        imageUrl: '/images/projects/project5.png', // Your actual project screenshot
         images: [
-          { url: '/images/projects/project2.png', filename: 'main' },
+          { url: '/images/projects/project5.png', filename: 'main' },
           // Add more screenshots if you have them
         ],
         
@@ -155,7 +155,7 @@ class ProjectsService {
         createdTime: '2024-01-15T10:00:00.000Z'
       },
       {
-        id: 'my-project-2',
+        id: 'project6',
         title: 'Savora',
         description: 'Savora’s web application offers a smooth and stylish way to explore our menu, book a table, and enjoy our traditional cuisine with modern convenience. From viewing delicious dishes to connecting with our chefs, everything you need is just a click away.',
         shortDescription: 'Explore our menu, reserve tables, and enjoy a seamless dining experience — all online with Savora.',
