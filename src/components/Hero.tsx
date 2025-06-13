@@ -1,6 +1,7 @@
 import Spline from '@splinetool/react-spline';
 import { ArrowRight, Code } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
+import logo from '../../public/images/projects/logo1.png';
 
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -154,11 +155,7 @@ const Hero = () => {
         <div className="max-w-6xl mx-auto">
           {/* Company Logo */}
           <div className="mb-8">
-            <img 
-              src="/images/projects/logo42.png" 
-              alt="42.ai Logo" 
-              className="mx-auto h-16 md:h-20 lg:h-24 w-auto object-contain hover:scale-105 transition-transform duration-300"
-            />
+            
           </div>
 
           {/* Hero Badge */}
@@ -166,6 +163,11 @@ const Hero = () => {
             <Code size={20} className="mr-3 text-blue-400" />
             <span className="text-base font-medium text-white">✨ Building Software That Builds Businesses</span>
           </div>
+
+<div style={{ position: 'fixed', left: '-20px', top: '-20px' }}>
+  <img src={logo} alt="Logo" style={{ width: '600px' }} />
+</div>
+
 
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-8 leading-tight">
