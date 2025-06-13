@@ -39,8 +39,8 @@ class ProjectsService {
         images: [
           { url: '/images/projects/project1.png', filename: 'main' },
         ],
-        startDate: '2024-01-15',
-        endDate: '2024-03-15',
+        startDate: '2024-12-15',
+        endDate: '2025-04-15',
         featured: true,
         tags: ['Full-Stack', 'Responsive', 'API'], // Add relevant tags
         createdTime: '2024-01-15T10:00:00.000Z'
@@ -51,7 +51,7 @@ class ProjectsService {
         description: 'Full-stack e-commerce platform with payment integration and admin dashboard.',
         shortDescription: 'Modern e-commerce platform with Stripe integration.',
         technologies: ['React', 'Node.js', 'Stripe', 'MongoDB'],
-        category: 'Web Development',
+        category: 'ui/ux',
         status: 'Completed',
         clientName: 'Local Business',
         projectUrl: 'https://mybusiness.com',
@@ -62,8 +62,8 @@ class ProjectsService {
           { url: '/images/projects/ecommerce-cart.jpg', filename: 'shopping-cart' },
           { url: '/images/projects/ecommerce-admin.jpg', filename: 'admin-panel' }
         ],
-        startDate: '2024-02-01',
-        endDate: '2024-04-15',
+        startDate: '2024-12-01',
+        endDate: '2024-12-10',
         featured: true,
         tags: ['E-commerce', 'Payment', 'Admin Panel'],
         createdTime: '2024-02-01T10:00:00.000Z'
@@ -81,8 +81,8 @@ class ProjectsService {
         images: [
           { url: '/images/projects/project2.png', filename: 'main' },
         ],
-        startDate: '2024-01-15',
-        endDate: '2024-03-15',
+        startDate: '2025-03-15',
+        endDate: '2024-04-20',
         featured: true,
         tags: ['Full-Stack', 'Responsive', 'API'], // Add relevant tags
         createdTime: '2024-01-15T10:00:00.000Z'
@@ -100,8 +100,8 @@ class ProjectsService {
         images: [
           { url: '/images/projects/project4.png', filename: 'main' },
         ],
-        startDate: '2024-01-15',
-        endDate: '2024-03-15',
+        startDate: '2025-06-02',
+        endDate: '2024-06-09',
         featured: true,
         tags: ['Full-Stack', 'Responsive', 'API'], // Add relevant tags
         createdTime: '2024-01-15T10:00:00.000Z'
@@ -119,8 +119,8 @@ class ProjectsService {
         images: [
           { url: '/images/projects/project5.png', filename: 'main' },
         ],
-        startDate: '2024-01-15',
-        endDate: '2024-03-15',
+        startDate: '2024-12-10',
+        endDate: '2025-01-15',
         featured: true,
         tags: ['Full-Stack', 'Responsive', 'API'], // Add relevant tags
         createdTime: '2024-01-15T10:00:00.000Z'
@@ -132,15 +132,15 @@ class ProjectsService {
         description: 'Drive Me is a comprehensive fine management platform designed to streamline the process of issuing, managing, and paying vehicle fines in Sri Lanka. It includes a user app for payments and license oversight, a police app for recording violations and retrieving vehicle details, and a web-based admin portal for oversight and report generation — all powered by a modern stack featuring React Native, Node.js, Express, and MongoDB.',
         shortDescription: 'It lets users pay fines and check license details,Police can issue fines and view vehicle information,Admins can manage payments, users, and reports.',
         technologies: ['React Native','React,Node.js','MongoDB','Machine learning algorithm' ,'JWT'], // Add your actual technologies
-        category: 'Web Development',
+        category: 'Web Development & Mobile Development',
         status: 'Completed',
         clientName: 'Ashan',
         imageUrl: '/images/projects/project6.png',
         images: [
           { url: '/images/projects/project6.png', filename: 'main' },
         ],
-        startDate: '2024-01-15',
-        endDate: '2024-03-15',
+        startDate: '2024-10-15',
+        endDate: '2025-01-03',
         featured: true,
         tags: ['Full-Stack', 'Responsive', 'API'], // Add relevant tags
         createdTime: '2024-01-15T10:00:00.000Z'
