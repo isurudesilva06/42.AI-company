@@ -1,4 +1,3 @@
-
 class ProjectsService {
   constructor() {
     console.log('🔒 Projects service initialized with STATIC LOCAL DATA ONLY - No Airtable or external APIs');
@@ -71,8 +70,8 @@ class ProjectsService {
       {
         id: 'project3',
         title: 'Savora',
-        description: 'Savora’s web application offers a smooth and stylish way to explore our menu, book a table, and enjoy our traditional cuisine with modern convenience. From viewing delicious dishes to connecting with our chefs, everything you need is just a click away.',
-        shortDescription: 'Explore our menu, reserve tables, and enjoy a seamless dining experience — all online with Savora.',
+        description: "Savora's web application offers a smooth and stylish way to explore our menu, book a table, and enjoy our traditional cuisine with modern convenience. From viewing delicious dishes to connecting with our chefs, everything you need is just a click away.",
+        shortDescription: "Explore our menu, reserve tables, and enjoy a seamless dining experience — all online with Savora.",
         technologies: ['HTML5', 'CSS3', 'JavaScriptB'], // Add your actual technologies
         category: 'Web Development',
         status: 'Completed',
@@ -90,8 +89,8 @@ class ProjectsService {
       {
         id: 'project4',
         title: 'Budget Buddy',
-        description: 'Savora’s web application offers a smooth and stylish way to explore our menu, book a table, and enjoy our traditional cuisine with modern convenience. From viewing delicious dishes to connecting with our chefs, everything you need is just a click away.',
-        shortDescription: 'Explore our menu, reserve tables, and enjoy a seamless dining experience — all online with Savora.',
+        description: "Savora's web application offers a smooth and stylish way to explore our menu, book a table, and enjoy our traditional cuisine with modern convenience. From viewing delicious dishes to connecting with our chefs, everything you need is just a click away.",
+        shortDescription: "Explore our menu, reserve tables, and enjoy a seamless dining experience — all online with Savora.",
         technologies: ['HTML5', 'CSS3', 'JavaScriptB'], // Add your actual technologies
         category: 'Mobile Development',
         status: 'Completed',
@@ -109,8 +108,8 @@ class ProjectsService {
       {
         id: 'project5',
         title: 'Dashboard for a clothing company',
-        description: 'Savora’s web application offers a smooth and stylish way to explore our menu, book a table, and enjoy our traditional cuisine with modern convenience. From viewing delicious dishes to connecting with our chefs, everything you need is just a click away.',
-        shortDescription: 'Explore our menu, reserve tables, and enjoy a seamless dining experience — all online with Savora.',
+        description: "Savora's web application offers a smooth and stylish way to explore our menu, book a table, and enjoy our traditional cuisine with modern convenience. From viewing delicious dishes to connecting with our chefs, everything you need is just a click away.",
+        shortDescription: "Explore our menu, reserve tables, and enjoy a seamless dining experience — all online with Savora.",
         technologies: ['HTML5', 'CSS3', 'JavaScriptB'], // Add your actual technologies
         category: 'Web Development',
         status: 'Completed',
@@ -125,9 +124,27 @@ class ProjectsService {
         tags: ['Full-Stack', 'Responsive', 'API'], // Add relevant tags
         createdTime: '2024-01-15T10:00:00.000Z'
       },
-      
       {
         id: 'project6',
+        title: 'DriveMe',
+        description: 'Drive Me is a comprehensive fine management platform designed to streamline the process of issuing, managing, and paying vehicle fines in Sri Lanka. It includes a user app for payments and license oversight, a police app for recording violations and retrieving vehicle details, and a web-based admin portal for oversight and report generation — all powered by a modern stack featuring React Native, Node.js, Express, and MongoDB.',
+        shortDescription: 'It lets users pay fines and check license details,Police can issue fines and view vehicle information,Admins can manage payments, users, and reports.',
+        technologies: ['React Native,React,Node.js,MongoDB,Machine learning algorithm ,JWT'], // Add your actual technologies
+        category: 'Web Development',
+        status: 'Completed',
+        clientName: 'Ashan',
+        imageUrl: '/images/projects/project6.png',
+        images: [
+          { url: '/images/projects/project6.png', filename: 'main' },
+        ],
+        startDate: '2024-01-15',
+        endDate: '2024-03-15',
+        featured: true,
+        tags: ['Full-Stack', 'Responsive', 'API'], // Add relevant tags
+        createdTime: '2024-01-15T10:00:00.000Z'
+      },
+      {
+        id: 'project7',
         title: 'DriveMe',
         description: 'Drive Me is a comprehensive fine management platform designed to streamline the process of issuing, managing, and paying vehicle fines in Sri Lanka. It includes a user app for payments and license oversight, a police app for recording violations and retrieving vehicle details, and a web-based admin portal for oversight and report generation — all powered by a modern stack featuring React Native, Node.js, Express, and MongoDB.',
         shortDescription: 'It lets users pay fines and check license details,Police can issue fines and view vehicle information,Admins can manage payments, users, and reports.',

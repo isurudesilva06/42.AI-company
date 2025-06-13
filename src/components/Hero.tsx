@@ -152,6 +152,15 @@ const Hero = () => {
       {/* Content Overlay - Original centered position */}
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="max-w-6xl mx-auto">
+          {/* Company Logo */}
+          <div className="mb-8">
+            <img 
+              src="/images/projects/logo42.png" 
+              alt="42.ai Logo" 
+              className="mx-auto h-16 md:h-20 lg:h-24 w-auto object-contain hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+
           {/* Hero Badge */}
           <div className="inline-flex items-center bg-black/30 px-6 py-3 rounded-full mb-10 border border-white/20">
             <Code size={20} className="mr-3 text-blue-400" />
