@@ -130,7 +130,7 @@ class ProjectsService {
         title: 'DriveMe',
         description: 'Drive Me is a comprehensive fine management platform designed to streamline the process of issuing, managing, and paying vehicle fines in Sri Lanka. It includes a user app for payments and license oversight, a police app for recording violations and retrieving vehicle details, and a web-based admin portal for oversight and report generation — all powered by a modern stack featuring React Native, Node.js, Express, and MongoDB.',
         shortDescription: 'It lets users pay fines and check license details,Police can issue fines and view vehicle information,Admins can manage payments, users, and reports.',
-        technologies: ['React Native,React,Node.js,MongoDB,Machine learning algorithm ,JWT'], // Add your actual technologies
+        technologies: ['React Native','React,Node.js','MongoDB','Machine learning algorithm' ,'JWT'], // Add your actual technologies
         category: 'Web Development',
         status: 'Completed',
         clientName: 'Ashan',
