@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Calendar } from 'lucide-react';
 
@@ -70,7 +69,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="font-semibold">Location</div>
-                  <div className="text-foreground/70">San Francisco, CA</div>
+                  <div className="text-foreground/70">Colombo, Sri Lanka</div>
                 </div>
               </div>
 
@@ -168,14 +167,18 @@ const Contact = () => {
                     name="projectType"
                     value={formData.projectType}
                     onChange={handleChange}
-                    className="w-full glass px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300"
+                    className="w-full glass px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400/50 
+                             transition-all duration-300 cursor-pointer border border-white/10 
+                             hover:border-blue-400/50 hover:glow-blue hover:scale-[1.02]
+                             bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm
+                             focus:border-blue-400/50 focus:bg-gray-900/70"
                   >
-                    <option value="">Select project type</option>
-                    <option value="web-app">Web Application</option>
-                    <option value="mobile-app">Mobile App</option>
-                    <option value="mvp">MVP Development</option>
-                    <option value="enterprise">Enterprise Solution</option>
-                    <option value="consulting">Technical Consulting</option>
+                    <option value="" className="bg-gray-800 text-white">Select project type</option>
+                    <option value="web-app" className="bg-gray-800 text-white hover:bg-blue-900">Web Application</option>
+                    <option value="mobile-app" className="bg-gray-800 text-white hover:bg-blue-900">Mobile App</option>
+                    <option value="mvp" className="bg-gray-800 text-white hover:bg-blue-900">MVP Development</option>
+                    <option value="enterprise" className="bg-gray-800 text-white hover:bg-blue-900">Enterprise Solution</option>
+                    <option value="consulting" className="bg-gray-800 text-white hover:bg-blue-900">Technical Consulting</option>
                   </select>
                 </div>
               </div>
@@ -189,14 +192,18 @@ const Contact = () => {
                   name="budget"
                   value={formData.budget}
                   onChange={handleChange}
-                  className="w-full glass px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300"
+                  className="w-full glass px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400/50 
+                           transition-all duration-300 cursor-pointer border border-white/10 
+                           hover:border-purple-400/50 hover:glow-purple hover:scale-[1.02]
+                           bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm
+                           focus:border-purple-400/50 focus:bg-gray-900/70"
                 >
-                  <option value="">Select budget range</option>
-                  <option value="10k-25k">$10k - $25k</option>
-                  <option value="25k-50k">$25k - $50k</option>
-                  <option value="50k-100k">$50k - $100k</option>
-                  <option value="100k+">$100k+</option>
-                  <option value="discuss">Let's discuss</option>
+                  <option value="" className="bg-gray-800 text-white">Select budget range</option>
+                  <option value="4k-10k" className="bg-gray-800 text-white hover:bg-purple-900">$4k - $10k</option>
+                  <option value="10k-20k" className="bg-gray-800 text-white hover:bg-purple-900">$10k - $20k</option>
+                  <option value="20k-50k" className="bg-gray-800 text-white hover:bg-purple-900">$20k - $50k</option>
+                  <option value="50k+" className="bg-gray-800 text-white hover:bg-purple-900">$50k+</option>
+                  <option value="discuss" className="bg-gray-800 text-white hover:bg-purple-900">Let's discuss</option>
                 </select>
               </div>
 

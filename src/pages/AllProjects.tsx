@@ -278,31 +278,103 @@ const AllProjects = () => {
             </p>
           </div>
           {/* Filters */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <div className="flex items-center gap-2">
-              <Filter size={16} className="text-foreground/60" />
-              <span className="text-sm text-foreground/60">Filter by:</span>
+          <div className="glass-dark rounded-2xl p-6 mb-12 max-w-4xl mx-auto border border-white/10">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              {/* Filter Label Section */}
+              <div className="flex items-center gap-3 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-600/10 rounded-xl border border-blue-500/20">
+                <Filter size={18} className="text-blue-400" />
+                <span className="text-sm font-semibold text-blue-400">Filter Projects:</span>
+              </div>
+              
+              {/* Filter Controls Section */}
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                {/* Category Filter */}
+                <div className="relative group">
+                  <label className="block text-xs font-medium text-foreground/60 mb-1 ml-1">Category</label>
+                  <select
+                    value={selectedCategory}
+                    onChange={(e) => setSelectedCategory(e.target.value)}
+                    className="glass px-4 py-3 rounded-xl text-sm font-medium min-w-[180px] 
+                             focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50
+                             hover:glow-blue transition-all duration-300 cursor-pointer
+                             border border-white/10 hover:border-blue-400/30
+                             bg-gradient-to-r from-gray-900/50 to-gray-800/50"
+                  >
+                    {categories.map(category => (
+                      <option key={category} value={category} className="bg-gray-800 text-white">
+                        {category}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                
+                {/* Status Filter */}
+                <div className="relative group">
+                  <label className="block text-xs font-medium text-foreground/60 mb-1 ml-1">Status</label>
+                  <select
+                    value={selectedStatus}
+                    onChange={(e) => setSelectedStatus(e.target.value)}
+                    className="glass px-4 py-3 rounded-xl text-sm font-medium min-w-[160px]
+                             focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50
+                             hover:glow-purple transition-all duration-300 cursor-pointer
+                             border border-white/10 hover:border-purple-400/30
+                             bg-gradient-to-r from-gray-900/50 to-gray-800/50"
+                  >
+                    {statuses.map(status => (
+                      <option key={status} value={status} className="bg-gray-800 text-white">
+                        {status}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                
+                {/* Filter Results Counter */}
+                <div className="flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-green-500/10 to-emerald-600/10 rounded-lg border border-green-500/20">
+                  <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                  <span className="text-xs font-medium text-green-400">
+                    {filteredProjects.length} project{filteredProjects.length !== 1 ? 's' : ''} found
+                  </span>
+                </div>
+              </div>
             </div>
-            {/* Category Filter */}
-            <select
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              className="glass px-4 py-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-            >
-              {categories.map(category => (
-                <option key={category} value={category}>{category}</option>
-              ))}
-            </select>
-            {/* Status Filter */}
-            <select
-              value={selectedStatus}
-              onChange={(e) => setSelectedStatus(e.target.value)}
-              className="glass px-4 py-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-            >
-              {statuses.map(status => (
-                <option key={status} value={status}>{status}</option>
-              ))}
-            </select>
+            
+            {/* Active Filters Display */}
+            {(selectedCategory !== 'All' || selectedStatus !== 'All') && (
+              <div className="flex flex-wrap items-center gap-2 mt-4 pt-4 border-t border-white/10">
+                <span className="text-xs text-foreground/60 font-medium">Active Filters:</span>
+                {selectedCategory !== 'All' && (
+                  <span className="inline-flex items-center gap-1 px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs font-medium border border-blue-500/30">
+                    {selectedCategory}
+                    <button
+                      onClick={() => setSelectedCategory('All')}
+                      className="ml-1 hover:bg-blue-500/30 rounded-full p-0.5 transition-colors"
+                    >
+                      <X size={12} />
+                    </button>
+                  </span>
+                )}
+                {selectedStatus !== 'All' && (
+                  <span className="inline-flex items-center gap-1 px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs font-medium border border-purple-500/30">
+                    {selectedStatus}
+                    <button
+                      onClick={() => setSelectedStatus('All')}
+                      className="ml-1 hover:bg-purple-500/30 rounded-full p-0.5 transition-colors"
+                    >
+                      <X size={12} />
+                    </button>
+                  </span>
+                )}
+                <button
+                  onClick={() => {
+                    setSelectedCategory('All');
+                    setSelectedStatus('All');
+                  }}
+                  className="text-xs text-foreground/60 hover:text-red-400 font-medium underline transition-colors"
+                >
+                  Clear All
+                </button>
+              </div>
+            )}
           </div>
           {/* Projects Grid */}
           {filteredProjects.length === 0 ? (
