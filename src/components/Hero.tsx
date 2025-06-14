@@ -1,12 +1,34 @@
 import Spline from '@splinetool/react-spline';
-import { ArrowRight, Code } from 'lucide-react';
+import { ArrowRight, Code, Calendar, Phone, Mail, Clock } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import logo from '../../public/images/projects/logo1.png';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from './ui/dialog';
+import { Button } from './ui/button';
 
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [bgColor, setBgColor] = useState({ r: 15, g: 23, b: 42 }); // slate-900 base
   const [particles, setParticles] = useState([]);
+  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
+  const [consultationFormData, setConsultationFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    projectType: '',
+    budget: '',
+    timeframe: '',
+    message: '',
+    preferredDate: '',
+    preferredTime: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const animationRef = useRef<number>();
 
   useEffect(() => {
@@ -78,6 +100,51 @@ const Hero = () => {
       }
     };
   }, []);
+
+  const handleConsultationSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      // Simulate API call - replace with actual booking system integration
+      console.log('Consultation booking:', consultationFormData);
+      
+      // Here you would integrate with:
+      // - Calendly API
+      // - Google Calendar API
+      // - Your own booking system
+      // - Email service like EmailJS
+      
+      await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate API delay
+      
+      alert('Thank you! Your consultation request has been submitted. We\'ll contact you within 24 hours to schedule your free consultation.');
+      
+      // Reset form
+      setConsultationFormData({
+        name: '', email: '', phone: '', company: '', projectType: '',
+        budget: '', timeframe: '', message: '', preferredDate: '', preferredTime: ''
+      });
+      setIsConsultationModalOpen(false);
+    } catch (error) {
+      alert('Sorry, there was an error submitting your request. Please try again or contact us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleConsultationFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setConsultationFormData({
+      ...consultationFormData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -183,14 +250,21 @@ const Hero = () => {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20">
-            <button className="group bg-gradient-to-r from-blue-500 to-purple-600 px-10 py-5 rounded-lg font-semibold text-white text-lg hover:scale-105 transition-all duration-300 shadow-lg flex items-center gap-3">
-              Book Free Consultation
-              <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-20">
+            <button 
+              onClick={() => setIsConsultationModalOpen(true)}
+              className="group w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-4 sm:px-8 md:px-10 sm:py-5 rounded-lg font-semibold text-white text-base sm:text-lg hover:scale-105 hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-3 cursor-pointer relative overflow-hidden"
+            >
+              <span className="relative z-10 flex items-center gap-3">
+                <Calendar size={20} className="sm:hidden" />
+                Book Free Consultation
+                <ArrowRight size={20} className="sm:size-6 group-hover:translate-x-1 transition-transform" />
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </button>
             <a 
               href="#projects"
-              className="bg-white/20 border border-white/30 px-10 py-5 rounded-lg font-semibold text-white text-lg hover:bg-white/30 transition-all duration-300 inline-block cursor-pointer"
+              className="w-full sm:w-auto bg-white/20 border border-white/30 px-6 py-4 sm:px-8 md:px-10 sm:py-5 rounded-lg font-semibold text-white text-base sm:text-lg hover:bg-white/30 transition-all duration-300 inline-block cursor-pointer text-center"
             >
               See Our Work
             </a>
@@ -240,6 +314,261 @@ const Hero = () => {
           <div className="w-1 h-3 bg-gradient-to-b from-blue-400 to-purple-400 rounded-full mt-2 animate-bounce"></div>
         </div>
       </div>
+
+      {/* Consultation Booking Modal */}
+      <Dialog open={isConsultationModalOpen} onOpenChange={setIsConsultationModalOpen}>
+        <DialogContent className="glass-dark max-w-2xl max-h-[90vh] overflow-y-auto border-white/20">
+          <DialogHeader>
+            <div className="flex items-center mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg mr-4">
+                <Calendar size={24} className="text-white" />
+              </div>
+              <div>
+                <DialogTitle className="text-2xl font-bold gradient-text text-left">
+                  Book Your Free Consultation
+                </DialogTitle>
+                <DialogDescription className="text-foreground/70 text-left">
+                  Let's discuss your project and explore how we can help bring your vision to life.
+                </DialogDescription>
+              </div>
+            </div>
+          </DialogHeader>
+
+          <form onSubmit={handleConsultationSubmit} className="space-y-6">
+            {/* Personal Information */}
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="consultName" className="block text-sm font-medium mb-2">
+                  Full Name *
+                </label>
+                <input
+                  type="text"
+                  id="consultName"
+                  name="name"
+                  value={consultationFormData.name}
+                  onChange={handleConsultationFormChange}
+                  className="w-full glass px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300"
+                  placeholder="John Doe"
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="consultEmail" className="block text-sm font-medium mb-2">
+                  Email Address *
+                </label>
+                <input
+                  type="email"
+                  id="consultEmail"
+                  name="email"
+                  value={consultationFormData.email}
+                  onChange={handleConsultationFormChange}
+                  className="w-full glass px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300"
+                  placeholder="john@company.com"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="consultPhone" className="block text-sm font-medium mb-2">
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  id="consultPhone"
+                  name="phone"
+                  value={consultationFormData.phone}
+                  onChange={handleConsultationFormChange}
+                  className="w-full glass px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300"
+                  placeholder="+1 (555) 123-4567"
+                />
+              </div>
+              <div>
+                <label htmlFor="consultCompany" className="block text-sm font-medium mb-2">
+                  Company
+                </label>
+                <input
+                  type="text"
+                  id="consultCompany"
+                  name="company"
+                  value={consultationFormData.company}
+                  onChange={handleConsultationFormChange}
+                  className="w-full glass px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300"
+                  placeholder="Your Company"
+                />
+              </div>
+            </div>
+
+            {/* Project Details */}
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="consultProjectType" className="block text-sm font-medium mb-2">
+                  Project Type *
+                </label>
+                <select
+                  id="consultProjectType"
+                  name="projectType"
+                  value={consultationFormData.projectType}
+                  onChange={handleConsultationFormChange}
+                  className="w-full glass px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300"
+                  required
+                >
+                  <option value="">Select project type</option>
+                  <option value="web-app">Web Application</option>
+                  <option value="mobile-app">Mobile App</option>
+                  <option value="mvp">MVP Development</option>
+                  <option value="enterprise">Enterprise Solution</option>
+                  <option value="ecommerce">E-commerce Platform</option>
+                  <option value="consulting">Technical Consulting</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div>
+                <label htmlFor="consultBudget" className="block text-sm font-medium mb-2">
+                  Budget Range
+                </label>
+                <select
+                  id="consultBudget"
+                  name="budget"
+                  value={consultationFormData.budget}
+                  onChange={handleConsultationFormChange}
+                  className="w-full glass px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300"
+                >
+                  <option value="">Select budget range</option>
+                  <option value="5k-15k">$5k - $15k</option>
+                  <option value="15k-30k">$15k - $30k</option>
+                  <option value="30k-50k">$30k - $50k</option>
+                  <option value="50k-100k">$50k - $100k</option>
+                  <option value="100k+">$100k+</option>
+                  <option value="discuss">Let's discuss</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="consultTimeframe" className="block text-sm font-medium mb-2">
+                Project Timeframe
+              </label>
+              <select
+                id="consultTimeframe"
+                name="timeframe"
+                value={consultationFormData.timeframe}
+                onChange={handleConsultationFormChange}
+                className="w-full glass px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300"
+              >
+                <option value="">Select timeframe</option>
+                <option value="asap">ASAP</option>
+                <option value="1-3months">1-3 months</option>
+                <option value="3-6months">3-6 months</option>
+                <option value="6-12months">6-12 months</option>
+                <option value="flexible">Flexible</option>
+              </select>
+            </div>
+
+            {/* Preferred Consultation Time */}
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="consultDate" className="block text-sm font-medium mb-2">
+                  Preferred Date
+                </label>
+                <input
+                  type="date"
+                  id="consultDate"
+                  name="preferredDate"
+                  value={consultationFormData.preferredDate}
+                  onChange={handleConsultationFormChange}
+                  min={new Date().toISOString().split('T')[0]}
+                  className="w-full glass px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300"
+                />
+              </div>
+              <div>
+                <label htmlFor="consultTime" className="block text-sm font-medium mb-2">
+                  Preferred Time
+                </label>
+                <select
+                  id="consultTime"
+                  name="preferredTime"
+                  value={consultationFormData.preferredTime}
+                  onChange={handleConsultationFormChange}
+                  className="w-full glass px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300"
+                >
+                  <option value="">Select time</option>
+                  <option value="9-10am">9:00 AM - 10:00 AM</option>
+                  <option value="10-11am">10:00 AM - 11:00 AM</option>
+                  <option value="11-12pm">11:00 AM - 12:00 PM</option>
+                  <option value="1-2pm">1:00 PM - 2:00 PM</option>
+                  <option value="2-3pm">2:00 PM - 3:00 PM</option>
+                  <option value="3-4pm">3:00 PM - 4:00 PM</option>
+                  <option value="4-5pm">4:00 PM - 5:00 PM</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="consultMessage" className="block text-sm font-medium mb-2">
+                Tell us about your project
+              </label>
+              <textarea
+                id="consultMessage"
+                name="message"
+                value={consultationFormData.message}
+                onChange={handleConsultationFormChange}
+                rows={4}
+                className="w-full glass px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300 resize-none"
+                placeholder="Describe your project, goals, and any specific requirements..."
+              />
+            </div>
+
+            {/* Information Box */}
+            <div className="glass rounded-lg p-4 border border-blue-400/20">
+              <div className="flex items-start space-x-3">
+                <Clock size={20} className="text-blue-400 mt-0.5 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold text-blue-400 mb-1">What to Expect</h4>
+                  <ul className="text-sm text-foreground/80 space-y-1">
+                    <li>• 30-minute consultation call</li>
+                    <li>• Project scope and requirements discussion</li>
+                    <li>• Technology recommendations</li>
+                    <li>• Timeline and budget estimation</li>
+                    <li>• No obligation - completely free</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Submit Button */}
+            <div className="flex flex-col sm:flex-row gap-3 pt-4">
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    Booking Consultation...
+                  </>
+                ) : (
+                  <>
+                    <Calendar size={16} className="mr-2" />
+                    Book Free Consultation
+                  </>
+                )}
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={scrollToContact}
+                className="glass border-white/30 hover:bg-white/10 text-white"
+              >
+                <Mail size={16} className="mr-2" />
+                Or Contact Us
+              </Button>
+            </div>
+          </form>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
