@@ -111,9 +111,9 @@ class ProjectsService {
         description: "Savora's web application offers a smooth and stylish way to explore our menu, book a table, and enjoy our traditional cuisine with modern convenience. From viewing delicious dishes to connecting with our chefs, everything you need is just a click away.",
         shortDescription: "Explore our menu, reserve tables, and enjoy a seamless dining experience — all online with Savora.",
         technologies: ['HTML5', 'CSS3', 'JavaScriptB'], // Add your actual technologies
-        category: 'Web Development',
+        category: 'UI/UX',
         status: 'Completed',
-        clientName: 'Ashan',
+        clientName: 'SD Promotions',
         imageUrl: '/images/projects/project5.png',
         images: [
           { url: '/images/projects/project5.png', filename: 'main' },
