@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ExternalLink, Github, Calendar, Tag, Filter, X, Loader2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import apiService from '../lib/apiService';
 import { Project } from '../lib/projectsService';
 
@@ -360,12 +361,12 @@ const Projects = () => {
             </div>
             {/* See All Button */}
             <div className="flex justify-center mt-12">
-              <a
-                href="/all-projects"
-                className="bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-lg font-semibold text-white text-lg hover:scale-105 transition-all duration-300 shadow-lg"
+              <Link
+                to="/all-projects"
+                className="bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-lg font-semibold text-white text-lg hover:scale-105 transition-all duration-300 shadow-lg inline-block"
               >
                 See All Projects
-              </a>
+              </Link>
             </div>
           </>
         )}

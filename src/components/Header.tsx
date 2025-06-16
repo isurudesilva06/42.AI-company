@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import logo from '..//../public/images/projects/logo1.png'; // Adjust path if needed
 
 const Header = () => {
@@ -16,12 +17,13 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Technologies', href: '#technologies' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '#home', type: 'scroll' },
+    { name: 'About', href: '#about', type: 'scroll' },
+    { name: 'Services', href: '#services', type: 'scroll' },
+    { name: 'Projects', href: '#projects', type: 'scroll' },
+    { name: 'All Projects', href: '/all-projects', type: 'route' },
+    { name: 'Technologies', href: '#technologies', type: 'scroll' },
+    { name: 'Contact', href: '#contact', type: 'scroll' },
   ];
 
   return (
@@ -49,14 +51,25 @@ const Header = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-foreground/80 hover:text-foreground transition-colors duration-300 relative group"
-              >
-                {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              item.type === 'route' ? (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className="text-foreground/80 hover:text-foreground transition-colors duration-300 relative group"
+                >
+                  {item.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300 group-hover:w-full"></span>
+                </Link>
+              ) : (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="text-foreground/80 hover:text-foreground transition-colors duration-300 relative group"
+                >
+                  {item.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              )
             ))}
             <button className="glass px-6 py-2 rounded-lg hover:glow-blue transition-all duration-300 text-sm font-medium">
               Get Started
@@ -76,14 +89,25 @@ const Header = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 glass-dark rounded-lg p-4">
             {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="block py-2 text-foreground/80 hover:text-foreground transition-colors duration-300"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {item.name}
-              </a>
+              item.type === 'route' ? (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className="block py-2 text-foreground/80 hover:text-foreground transition-colors duration-300"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ) : (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="block py-2 text-foreground/80 hover:text-foreground transition-colors duration-300"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </a>
+              )
             ))}
             <button className="w-full mt-4 glass px-6 py-2 rounded-lg hover:glow-blue transition-all duration-300 text-sm font-medium">
               Get Started
