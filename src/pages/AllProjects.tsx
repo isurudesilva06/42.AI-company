@@ -1,26 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { ExternalLink, Github, Calendar, Tag, Filter, X, Loader2 } from 'lucide-react';
 import GlobalCursor from '@/components/GlobalCursor';
-
-interface Project {
-  id: string;
-  title: string;
-  description: string;
-  shortDescription: string;
-  technologies: string[];
-  category: string;
-  status: string;
-  clientName: string;
-  projectUrl?: string;
-  githubUrl?: string;
-  imageUrl: string;
-  images: { url: string; filename: string }[];
-  startDate?: string;
-  endDate?: string;
-  featured: boolean;
-  tags: string[];
-  createdTime: string;
-}
+import apiService from '../lib/apiService';
+import { Project } from '../lib/projectsService';
 
 const AllProjects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -45,20 +27,18 @@ const AllProjects = () => {
   const fetchProjects = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/projects');
-      if (!response.ok) {
-        throw new Error(`Backend not available: ${response.status}`);
-      }
-      const data = await response.json();
-      if (data.success && Array.isArray(data.data)) {
-        setProjects(data.data);
+      const response = await apiService.getProjects();
+      if (response.success && response.data) {
+        setProjects(response.data);
         setError(null);
+        console.log('✅ Projects loaded from FRONTEND SERVICES - No backend needed!');
       } else {
-        throw new Error('Invalid data format from local backend');
+        throw new Error('Failed to load projects from frontend service');
       }
     } catch (err) {
-      setError('❌ Local backend server is not running. Please run "npm run dev".');
+      setError('❌ Failed to load projects from frontend service');
       setProjects([]);
+      console.error('❌ FRONTEND SERVICE ERROR:', err);
     } finally {
       setLoading(false);
     }

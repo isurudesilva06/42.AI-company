@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Globe, Smartphone, Database, Cloud, TestTube, Palette, CheckCircle, Star, Users, Zap, Send, Loader2 } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { useToast } from '@/hooks/use-toast';
+import apiService from '../lib/apiService';
 
 const Services = () => {
   const { toast } = useToast();
@@ -165,28 +166,20 @@ const Services = () => {
   const handleServiceInquiry = async (formData) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch('http://localhost:3001/api/service-inquiry', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          serviceType: selectedService.title,
-        }),
+      const response = await apiService.submitServiceInquiry({
+        ...formData,
+        serviceType: selectedService.title,
       });
 
-      const result = await response.json();
-
-      if (result.success) {
+      if (response.success) {
         toast({
           title: "Inquiry Sent Successfully!",
-          description: "We'll get back to you within 24 hours.",
+          description: "We'll get back to you within 24 hours. (Demo mode - no actual email sent)",
         });
         setShowInquiryForm(false);
         setSelectedService(null);
       } else {
-        throw new Error(result.message);
+        throw new Error(response.message);
       }
     } catch (error) {
       toast({

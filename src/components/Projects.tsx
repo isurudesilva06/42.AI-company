@@ -1,25 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ExternalLink, Github, Calendar, Tag, Filter, X, Loader2 } from 'lucide-react';
-
-interface Project {
-  id: string;
-  title: string;
-  description: string;
-  shortDescription: string;
-  technologies: string[];
-  category: string;
-  status: string;
-  clientName: string;
-  projectUrl?: string;
-  githubUrl?: string;
-  imageUrl: string;
-  images: { url: string; filename: string }[];
-  startDate?: string;
-  endDate?: string;
-  featured: boolean;
-  tags: string[];
-  createdTime: string;
-}
+import apiService from '../lib/apiService';
+import { Project } from '../lib/projectsService';
 
 const Projects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -45,28 +27,20 @@ const Projects = () => {
     try {
       setLoading(true);
       
-      // Only fetch from local backend - NO EXTERNAL DATA SOURCES
-      const response = await fetch('/api/projects');
+      // Use frontend services - NO BACKEND NEEDED
+      const response = await apiService.getProjects();
       
-      if (!response.ok) {
-        throw new Error(`Backend not available: ${response.status}`);
-      }
-      
-      const data = await response.json();
-      
-      if (data.success && Array.isArray(data.data)) {
-        // Ensure we only use local project data
-        setProjects(data.data);
+      if (response.success && response.data) {
+        setProjects(response.data);
         setError(null);
-        console.log('✅ Projects loaded from LOCAL BACKEND ONLY - No Airtable');
+        console.log('✅ Projects loaded from FRONTEND SERVICES - No backend needed!');
       } else {
-        throw new Error('Invalid data format from local backend');
+        throw new Error('Failed to load projects from frontend service');
       }
     } catch (err) {
-      // NO FALLBACK TO EXTERNAL SOURCES - ONLY LOCAL DATA
-      setError('❌ Local backend server is not running. Please run "npm run dev". NO EXTERNAL DATA SOURCES (including Airtable) will be used.');
-      setProjects([]); // Clear any existing data
-      console.error('❌ LOCAL BACKEND CONNECTION FAILED - NO AIRTABLE FALLBACK:', err);
+      setError('❌ Failed to load projects from frontend service');
+      setProjects([]);
+      console.error('❌ FRONTEND SERVICE ERROR:', err);
     } finally {
       setLoading(false);
     }

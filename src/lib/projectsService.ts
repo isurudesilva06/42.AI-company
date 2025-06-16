@@ -1,0 +1,189 @@
+export interface Project {
+  id: string;
+  title: string;
+  description: string;
+  shortDescription: string;
+  technologies: string[];
+  category: string;
+  status: string;
+  clientName: string;
+  projectUrl?: string;
+  githubUrl?: string;
+  imageUrl: string;
+  images: Array<{ url: string; filename: string }>;
+  startDate: string;
+  endDate: string;
+  featured: boolean;
+  tags: string[];
+  createdTime: string;
+}
+
+class ProjectsService {
+  private projects: Project[] = [
+    {
+      id: 'project1',
+      title: 'Recip Genie',
+      description: 'Recipe Genie is an AI-powered mobile app that helps users generate personalized recipes based on ingredients, cuisine, dietary preferences, and mood. With a simple and intuitive interface, it makes cooking easier, smarter, and more enjoyable for everyone—from beginners to seasoned chefs.',
+      shortDescription: 'AI-powered recipe generator',
+      technologies: ['React Native', 'Node.js', 'MongoDB'],
+      category: 'Mobile Development',
+      status: 'Completed',
+      clientName: 'Isuru',
+      projectUrl: 'https://your-project-url.com',
+      githubUrl: 'https://github.com/yourusername/repo',
+      imageUrl: '/images/projects/project1.png',
+      images: [
+        { url: '/images/projects/project1.png', filename: 'main' },
+      ],
+      startDate: '2024-12-15',
+      endDate: '2025-04-15',
+      featured: true,
+      tags: ['Full-Stack', 'Responsive', 'API'],
+      createdTime: '2024-01-15T10:00:00.000Z'
+    },
+    {
+      id: 'project2',
+      title: 'E-Commerce Website for a local business',
+      description: 'Full-stack e-commerce platform with payment integration and admin dashboard.',
+      shortDescription: 'Modern e-commerce platform with Stripe integration.',
+      technologies: ['React', 'Node.js', 'Stripe', 'MongoDB'],
+      category: 'ui/ux',
+      status: 'Completed',
+      clientName: 'Local Business',
+      projectUrl: 'https://mybusiness.com',
+      githubUrl: 'https://github.com/myusername/ecommerce',
+      imageUrl: '/images/projects/project3.png',
+      images: [
+        { url: '/images/projects/ecommerce-main.jpg', filename: 'homepage' },
+        { url: '/images/projects/ecommerce-cart.jpg', filename: 'shopping-cart' },
+        { url: '/images/projects/ecommerce-admin.jpg', filename: 'admin-panel' }
+      ],
+      startDate: '2024-12-01',
+      endDate: '2024-12-10',
+      featured: true,
+      tags: ['E-commerce', 'Payment', 'Admin Panel'],
+      createdTime: '2024-02-01T10:00:00.000Z'
+    },
+    {
+      id: 'project3',
+      title: 'Savora',
+      description: "Savora's web application offers a smooth and stylish way to explore our menu, book a table, and enjoy our traditional cuisine with modern convenience. From viewing delicious dishes to connecting with our chefs, everything you need is just a click away.",
+      shortDescription: "Explore our menu, reserve tables, and enjoy a seamless dining experience — all online with Savora.",
+      technologies: ['HTML5', 'CSS3', 'JavaScript'],
+      category: 'Web Development',
+      status: 'Completed',
+      clientName: 'Ashan',
+      imageUrl: '/images/projects/project2.png',
+      images: [
+        { url: '/images/projects/project2.png', filename: 'main' },
+      ],
+      startDate: '2025-03-15',
+      endDate: '2024-04-20',
+      featured: true,
+      tags: ['Full-Stack', 'Responsive', 'API'],
+      createdTime: '2024-01-15T10:00:00.000Z'
+    },
+    {
+      id: 'project4',
+      title: 'Budget Buddy',
+      description: "Budget Buddy is a comprehensive personal finance management application that helps users track expenses, set budgets, and achieve their financial goals with intelligent insights and recommendations.",
+      shortDescription: "Smart personal finance management with budget tracking and insights.",
+      technologies: ['React Native', 'Node.js', 'MongoDB'],
+      category: 'Mobile Development',
+      status: 'Completed',
+      clientName: 'Isuru',
+      imageUrl: '/images/projects/project4.png',
+      images: [
+        { url: '/images/projects/project4.png', filename: 'main' },
+      ],
+      startDate: '2025-06-02',
+      endDate: '2024-06-09',
+      featured: true,
+      tags: ['Full-Stack', 'Responsive', 'API'],
+      createdTime: '2024-01-15T10:00:00.000Z'
+    },
+    {
+      id: 'project5',
+      title: 'Dashboard for a clothing company',
+      description: "A comprehensive dashboard solution for a clothing company featuring inventory management, sales analytics, customer insights, and order processing capabilities.",
+      shortDescription: "Complete business dashboard with analytics and inventory management.",
+      technologies: ['React', 'TypeScript', 'Chart.js', 'Node.js'],
+      category: 'UI/UX',
+      status: 'Completed',
+      clientName: 'SD Promotions',
+      imageUrl: '/images/projects/project5.png',
+      images: [
+        { url: '/images/projects/project5.png', filename: 'main' },
+      ],
+      startDate: '2024-12-10',
+      endDate: '2025-01-15',
+      featured: true,
+      tags: ['Dashboard', 'Analytics', 'Business Intelligence'],
+      createdTime: '2024-01-15T10:00:00.000Z'
+    },
+    {
+      id: 'project6',
+      title: 'DriveMe',
+      description: 'Drive Me is a comprehensive fine management platform designed to streamline the process of issuing, managing, and paying vehicle fines in Sri Lanka. It includes a user app for payments and license oversight, a police app for recording violations and retrieving vehicle details, and a web-based admin portal for oversight and report generation — all powered by a modern stack featuring React Native, Node.js, Express, and MongoDB.',
+      shortDescription: 'It lets users pay fines and check license details, Police can issue fines and view vehicle information, Admins can manage payments, users, and reports.',
+      technologies: ['React Native', 'React', 'Node.js', 'MongoDB', 'Machine learning algorithm', 'JWT'],
+      category: 'Web Development & Mobile Development',
+      status: 'Completed',
+      clientName: 'Ashan',
+      imageUrl: '/images/projects/project6.png',
+      images: [
+        { url: '/images/projects/project6.png', filename: 'main' },
+      ],
+      startDate: '2024-10-15',
+      endDate: '2025-01-03',
+      featured: true,
+      tags: ['Full-Stack', 'Government', 'Mobile App'],
+      createdTime: '2024-01-15T10:00:00.000Z'
+    },
+    {
+      id: 'project7',
+      title: 'DriveMe Admin Portal',
+      description: 'Administrative portal for the DriveMe fine management system, providing comprehensive oversight and reporting capabilities for traffic enforcement agencies.',
+      shortDescription: 'Administrative portal for traffic fine management with advanced reporting.',
+      technologies: ['React', 'Node.js', 'MongoDB', 'Machine learning algorithm', 'JWT'],
+      category: 'Web Development',
+      status: 'Completed',
+      clientName: 'Ashan',
+      imageUrl: '/images/projects/project6.png',
+      images: [
+        { url: '/images/projects/project6.png', filename: 'main' },
+      ],
+      startDate: '2024-01-15',
+      endDate: '2024-03-15',
+      featured: true,
+      tags: ['Admin Panel', 'Reporting', 'Dashboard'],
+      createdTime: '2024-01-15T10:00:00.000Z'
+    }
+  ];
+
+  constructor() {
+    console.log('🔒 Projects service initialized with STATIC LOCAL DATA ONLY - Frontend only');
+  }
+
+  async getAllProjects(): Promise<Project[]> {
+    // Simulate async behavior for consistency with previous API calls
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        console.log('🔒 Returning ONLY local manual projects - Frontend service');
+        resolve(this.projects);
+      }, 100);
+    });
+  }
+
+  async getFeaturedProjects(): Promise<Project[]> {
+    const allProjects = await this.getAllProjects();
+    return allProjects.filter(project => project.featured).slice(0, 6);
+  }
+
+  async getProjectById(id: string): Promise<Project | null> {
+    const allProjects = await this.getAllProjects();
+    return allProjects.find(project => project.id === id) || null;
+  }
+}
+
+export default new ProjectsService(); 
